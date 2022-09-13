@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 
 namespace Kontrolltoo_Mang
 {
-    internal class Tegelane : Uksus, IComparable<Tegelane>
+    public class Tegelane : Uksus, IComparable<Tegelane>
     {
         private string nimi;
         private List<Ese> ese_list = new List<Ese>();
-
+        protected double m_value = 0.0;
         public Tegelane(string nimi)
         {
             this.nimi = nimi;
         }
-        public int addItem(int item) { return item; }
+        public int addItem(int punktideArv) 
+        { return punktideArv; }
         public int punktideArv()
         {
             int arv_sum = 0;
@@ -42,7 +43,31 @@ namespace Kontrolltoo_Mang
 
         public int CompareTo(Tegelane? other)
         {
-            throw new NotImplementedException();
+            if (other == null) return 1;
+            return m_value.CompareTo(other.m_value);
         }
+        public static bool operator >(Tegelane operand1, Tegelane operand2)
+        {
+            return operand1.CompareTo(operand2) > 0;
+        }
+
+        // Define the is less than operator.
+        public static bool operator <(Tegelane operand1, Tegelane operand2)
+        {
+            return operand1.CompareTo(operand2) < 0;
+        }
+
+        // Define the is greater than or equal to operator.
+        public static bool operator >=(Tegelane operand1, Tegelane operand2)
+        {
+            return operand1.CompareTo(operand2) >= 0;
+        }
+
+        // Define the is less than or equal to operator.
+        public static bool operator <=(Tegelane operand1, Tegelane operand2)
+        {
+            return operand1.CompareTo(operand2) <= 0;
+        }
+
     }
 }

@@ -20,5 +20,6 @@ namespace Kontrolltoo_Mang
         public string info(){ return nimetus; }
 
         public int punktideArv() { return punktide_arv; }
+        
     }
 }
