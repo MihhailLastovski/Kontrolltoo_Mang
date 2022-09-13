@@ -17,3 +17,4 @@ Väikeste haavade ravi jook;200
 Väga suure osavuse kindad;600
 Külmavastane ripats;400
 Tulevastane ehe;650
+Хлорофитовая броня;1200

@@ -42,7 +42,15 @@ namespace Kontrolltoo_Mang
             Console.WriteLine($"Nimi: {nimi}\nArvu punktide {punktideArv()}");
             return $"Nimi: {nimi}\nArvu punktide {punktideArv()}";
         }
-       
+        public void valjastaEsemed() 
+        {
+            Console.WriteLine("Esemed:");
+            foreach (Ese item in ese_list)
+            {
+                Console.WriteLine(item.info());
+            }
+            Console.WriteLine();
+        }
 
         public int CompareTo(Tegelane? other)
         {
@@ -53,7 +61,7 @@ namespace Kontrolltoo_Mang
         {
             Ese help_check = list[item];
             ese_list.Add(list[item]);
-            Console.WriteLine(help_check.info()); 
+            
 
         }
     }
