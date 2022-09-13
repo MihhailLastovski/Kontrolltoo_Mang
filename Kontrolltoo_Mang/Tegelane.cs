@@ -9,6 +9,7 @@ namespace Kontrolltoo_Mang
 {
     class Tegelane : Uksus, IComparable<Tegelane>
     {
+        int arv_sum_ = 0;
         private string nimi;
         private List<Ese> ese_list = new List<Ese>();
         protected double m_value = 0.0;
@@ -27,11 +28,27 @@ namespace Kontrolltoo_Mang
             }
             return arv_sum;
         }
+        public int punktideArv_(List <Ese> list, StreamReader from_file)
+        {
+            string text;
+            while ((text = from_file.ReadLine()) != null)
+            {
+                string[] values = text.Split(';');
+                list.Add(new Ese(values[0], int.Parse(values[1])));
+            }
+
+            from_file.Close();
+            foreach (Ese item in list)
+            {
+                arv_sum_ += item.punktideArv();
+            }
+            return arv_sum_;
+        }
 
         public string info()
         {
-            Console.WriteLine($"Nimi: {nimi}\nArvu punktide {punktideArv()}");
-            return $"Nimi: {nimi}\nArvu punktide {punktideArv()}";
+            Console.WriteLine($"Nimi: {nimi}\nArvu punktide {arv_sum_}");
+            return $"Nimi: {nimi}\nArvu punktide {arv_sum_}";
         }
        
 
@@ -40,7 +57,7 @@ namespace Kontrolltoo_Mang
             if (other == null) return 1;
             return m_value.CompareTo(other.m_value);
         }
-        public static void issueItems(List<Ese> list, int item)
+        public void issueItems(List<Ese> list, int item)
         {
             Ese qwe = list[item];
             qwe.info();
