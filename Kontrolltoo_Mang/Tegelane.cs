@@ -28,16 +28,9 @@ namespace Kontrolltoo_Mang
             }
             return arv_sum;
         }
-        public int punktideArv_(List <Ese> list, StreamReader from_file)
+        public int punktideArv_(List <Ese> list)
         {
-            string text;
-            while ((text = from_file.ReadLine()) != null)
-            {
-                string[] values = text.Split(';');
-                list.Add(new Ese(values[0], int.Parse(values[1])));
-            }
-
-            from_file.Close();
+            
             foreach (Ese item in list)
             {
                 arv_sum_ += item.punktideArv();
