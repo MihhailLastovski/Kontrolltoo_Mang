@@ -33,18 +33,19 @@ namespace Kontrolltoo_Mang
             Console.WriteLine($"Nimi: {nimi}\nArvu punktide{punktideArv()}");
             return $"Nimi: {nimi}\nArvu punktide{punktideArv()}";
         }
-        public void issueItems() 
-        {
-            foreach (Ese item in ese_list)
-            {
-                Console.WriteLine($"\n{item}");
-            }
-        }
+       
 
         public int CompareTo(Tegelane? other)
         {
             if (other == null) return 1;
             return m_value.CompareTo(other.m_value);
+        }
+        private void issueItems(List<Ese> list)
+        {
+            foreach (Ese item in list)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
