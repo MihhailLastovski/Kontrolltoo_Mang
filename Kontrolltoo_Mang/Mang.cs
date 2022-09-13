@@ -35,17 +35,17 @@ namespace Kontrolltoo_Mang
             out_list.Add(player);
             return out_list;
         }
-        public Tegelane suurimaPunktideArvuga() 
-        {
-            foreach (Tegelane item in characters) 
-            {
-                Tegelane b = ;
-                if ()
-                {
+        //public Tegelane suurimaPunktideArvuga() 
+        //{
+        //    foreach (Tegelane item in characters) 
+        //    {
+        //        Tegelane b = ;
+        //        if ()
+        //        {
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
     }
 }

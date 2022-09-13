@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Kontrolltoo_Mang
 {
-    public class Tegelane : Uksus, IComparable<Tegelane>
+    class Tegelane : Uksus, IComparable<Tegelane>
     {
         private string nimi;
         private List<Ese> ese_list = new List<Ese>();
@@ -30,8 +30,8 @@ namespace Kontrolltoo_Mang
 
         public string info()
         {
-            Console.WriteLine($"Nimi: {nimi}\nArvu punktide{punktideArv()}");
-            return $"Nimi: {nimi}\nArvu punktide{punktideArv()}";
+            Console.WriteLine($"Nimi: {nimi}\nArvu punktide {punktideArv()}");
+            return $"Nimi: {nimi}\nArvu punktide {punktideArv()}";
         }
        
 
@@ -40,12 +40,11 @@ namespace Kontrolltoo_Mang
             if (other == null) return 1;
             return m_value.CompareTo(other.m_value);
         }
-        private void issueItems(List<Ese> list)
+        public static void issueItems(List<Ese> list, int item)
         {
-            foreach (Ese item in list)
-            {
-                Console.WriteLine(item);
-            }
+            Ese qwe = list[item];
+            qwe.info();
+
         }
     }
 }
