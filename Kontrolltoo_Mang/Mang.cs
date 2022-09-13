@@ -8,5 +8,15 @@ namespace Kontrolltoo_Mang
 {
     internal class Mang
     {
+        private Tegelane[] characters;
+        public Mang(Tegelane[] characters)
+        {
+            this.characters = characters;
+        }
+        public Tegelane suurimaEsemeteArvuga() 
+        {
+            
+            return characters[0]; 
+        }
     }
 }
