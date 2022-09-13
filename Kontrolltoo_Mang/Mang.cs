@@ -14,7 +14,7 @@ namespace Kontrolltoo_Mang
         {
             this.characters = characters;
         }
-        public List <Tegelane> suurimaEsemeteArvuga()
+        public List <Tegelane> SuurimaEsemeteArvuga()
         {
             Tegelane player = characters[0];
             List<Tegelane> out_list = new List<Tegelane>();
@@ -28,7 +28,7 @@ namespace Kontrolltoo_Mang
                     out_list.Clear();
 
                 }
-                else if (check > 0)
+                if (check > 0)
                 { 
                     out_list.Add(item);
                 }

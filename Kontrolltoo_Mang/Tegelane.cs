@@ -43,9 +43,7 @@ namespace Kontrolltoo_Mang
 
         public int CompareTo(Tegelane? other)
         {
-            if (other == null) return 1;
-            return m_value.CompareTo(other.m_value);
+            throw new NotImplementedException();
         }
-        
     }
 }
