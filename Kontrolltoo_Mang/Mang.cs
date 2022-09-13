@@ -16,17 +16,17 @@ namespace Kontrolltoo_Mang
         }
         public List <Tegelane> SuurimaEsemeteArvuga()
         {
-            List<Tegelane> out_list = new List<Tegelane>();
             Tegelane player = characters[0];
+            List<Tegelane> out_list = new List<Tegelane>();
             foreach (Tegelane item in characters)
             {
                 int check = player.CompareTo(item);
-                if (check < 0)
+                if (check == 1)
                 {
                     player = item;
                     out_list.Clear();
                 }
-                if (check > 0)
+                if (check != 1)
                 {
                     out_list.Add(item);
                 }
@@ -35,7 +35,17 @@ namespace Kontrolltoo_Mang
             out_list.Add(player);
             return out_list;
         }
+        public Tegelane suurimaPunktideArvuga() 
+        {
+            foreach (Tegelane item in characters) 
+            {
+                Tegelane b = ;
+                if ()
+                {
 
+                }
+            }
+        }
 
     }
 }
