@@ -9,39 +9,39 @@ namespace Kontrolltoo_Mang
 {
     internal class Mang 
     {
-        private Tegelane[] characters;
-        public Mang(Tegelane[] characters)
+        private Tegelane[] tegelaste;
+        public Mang(Tegelane[] tegelaste)
         {
-            this.characters = characters;
+            this.tegelaste = tegelaste;
         }
         public List<Tegelane> SuurimaEsemeteArvuga()
         {
-            Tegelane player = characters[0];
-            List<Tegelane> out_list = new List<Tegelane>();
-            foreach (Tegelane item in characters)
+            Tegelane mangija = tegelaste[0];
+            List<Tegelane> tegelased = new List<Tegelane>();
+            foreach (Tegelane item in tegelaste)
             {
-                int check = player.CompareTo(item);
+                int check = mangija.CompareTo(item);
                 if (check < 0)
                 {
-                    player = item;
-                    out_list.Clear();
+                    mangija = item;
+                    tegelased.Clear();
                 }
-                if (check == 0) out_list.Add(item);
+                if (check == 0) tegelased.Add(item);
 
             }
-            out_list.Add(player);
-            return out_list;
+            tegelased.Add(mangija);
+            return tegelased;
         }
         public Tegelane SuurimaPunktideArvuga()
         {
-            int highest = 0;
-            Tegelane winner = characters[0];
-            foreach (Tegelane plr in characters)
+            int korgem = 0;
+            Tegelane voitja = tegelaste[0];
+            foreach (Tegelane mangija in tegelaste)
             {
-                int arv = plr.punktideArv();
-                if (arv > highest) { highest = arv; winner = plr; }
+                int arv = mangija.punktideArv();
+                if (arv > korgem) { korgem = arv; voitja = mangija; }
             }
-            return winner;
+            return voitja;
         }
 
     }

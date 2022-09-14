@@ -11,14 +11,13 @@ namespace Kontrolltoo_Mang
     {
         private string nimi;
         private List<Ese> ese_list = new List<Ese>();
-        protected double m_value = 0.0;
         public Tegelane(string nimi)
         {
             this.nimi = nimi;
 
         }
-        public int addItem(int item) 
-        { return item; }
+        public int lisaEse(int valik) 
+        { return valik; }
         public int punktideArv()
         {
             int arv_sum = 0;
@@ -35,7 +34,6 @@ namespace Kontrolltoo_Mang
         }
         public void valjastaEsemed() 
         {
-            Console.WriteLine("Esemed:");
             foreach (Ese item in ese_list)
             {
                 item.info();
@@ -46,14 +44,13 @@ namespace Kontrolltoo_Mang
         public int CompareTo(Tegelane? other)
         {
             if (other == null) return 1;
-            // return m_value.CompareTo(other.m_value);
             return this.ese_list.Count - other.EsesKogus();
         }
         private int EsesKogus() { return this.ese_list.Count; }
-        public void issueItems(List<Ese> list, int item)
-        {
-            ese_list.Add(list[item]);
-        }
-        public void Equip(Ese ese) { ese_list.Add(ese); }
+        //public void valjastaEsemed(List<Ese> list, int item)
+        //{
+        //    ese_list.Add(list[item]);
+        //}
+        public void valjastaEsemed(Ese ese) { ese_list.Add(ese); }
     }
 }

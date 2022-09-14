@@ -18,3 +18,4 @@ Väga suure osavuse kindad;600
 Külmavastane ripats;400
 Tulevastane ehe;650
 Хлорофитовая броня;1200
+Демонический фрукт;1500 

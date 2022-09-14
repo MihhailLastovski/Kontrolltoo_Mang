@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,33 +26,33 @@ namespace Kontrolltoo_Mang
             }
             return esed;
         }
-        public static string Namesforgame()
+        public static string nimedArray()
         {
-            string[] namesArray = { "Nebula", "Sol", "Papanja", "Andromeda", "Hydraponica", "Fuji", "Vitas" };
-            return namesArray[rnd.Next(namesArray.Length)];
+            string[] nimeArray = { "Nebula", "Sol", "Papanja", "Andromeda", "Hydraponica", "Fuji", "Vitas" };
+            return nimeArray[rnd.Next(nimeArray.Length)];
         }
-        static Tegelane[] createPlayers(int players_)
+        static Tegelane[] tegelaseLoomine(int mangija)
         {
-            if (players_ < 2) throw new Exception();
-            Tegelane[] players_Array = new Tegelane[players_];
-            for (int i = 0; i < players_; i++)
+            if (mangija < 2) throw new Exception();
+            Tegelane[] mangija_Array = new Tegelane[mangija];
+            for (int i = 0; i < mangija; i++)
             {
-                Tegelane plr = new Tegelane(Namesforgame());
-                players_Array[i] = plr;
+                Tegelane mangija_ = new Tegelane(nimedArray());
+                mangija_Array[i] = mangija_;
             }
-            List<Ese> itemList = LoeEsemed();
-            if (itemList.Count <= 0) throw new ArgumentOutOfRangeException();
-            foreach (Tegelane plr in players_Array)
+            List<Ese> esedList = LoeEsemed();
+            if (esedList.Count <= 0) throw new ArgumentOutOfRangeException();
+            foreach (Tegelane mangijas in mangija_Array)
             {
-                //var shuffled = itemList.OrderBy(_ => rnd.Next()).ToList();
-                Shuffle(itemList);
-                int amount = rnd.Next(2, 10);
-                for (int i = 0; i < amount; i++)
+                //var shuffled = esedList.OrderBy(_ => rnd.Next()).ToList();
+                Shuffle(esedList);
+                int kogus = rnd.Next(2, 10);
+                for (int i = 0; i < kogus; i++)
                 {
-                    plr.Equip(itemList[i]);
+                    mangijas.valjastaEsemed(esedList[i]);
                 }
             }
-            return players_Array;
+            return mangija_Array;
 
         }
             
@@ -68,27 +69,50 @@ namespace Kontrolltoo_Mang
                 list[n] = value;
             }
         }
-        public static void PlayGame(int total_players)
+        public static void mangida(int total_players)
         {
-            Tegelane[] players = createPlayers(total_players);
-            Mang game = new Mang(players);
-            foreach (Tegelane winner in game.SuurimaEsemeteArvuga())
+            Tegelane[] mangijad = tegelaseLoomine(total_players);
+            Mang mang = new Mang(mangijad);
+            foreach (Tegelane voitja in mang.SuurimaEsemeteArvuga())
             {
-                Console.WriteLine(winner.info());
+                Console.WriteLine(voitja.info());
             }
-            Tegelane win = game.SuurimaPunktideArvuga();
+            Tegelane voit = mang.SuurimaPunktideArvuga();
             Console.WriteLine();
-            Console.WriteLine("WINNER: ");
-            win.info();
+            Console.WriteLine("VÕITJA: ");
+            voit.info();
             Console.WriteLine();
             Console.WriteLine("Mängijal olid järgmisel esed: ");
-            win.valjastaEsemed();
+            Console.WriteLine("--------------------------------");
+            voit.valjastaEsemed();
+            Console.WriteLine("--------------------------------");
 
 
         }
         public static void start(int plrcount)
         {
-            PlayGame(plrcount);
+            while (true)
+            {
+                Console.WriteLine("Kas soovite mängu mängida? Y/N");
+                if (Console.ReadKey().Key == ConsoleKey.Y)
+                {
+
+
+                    Console.Clear();
+                    mangida(plrcount);
+
+
+
+
+                }
+                else
+                {
+                    break;
+                }
+            }
+            
+            
+            
         }
 
        
