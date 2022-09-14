@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Kontrolltoo_Mang
 {
-    class Tegelane : Uksus, IComparable<Tegelane>
+    class Tegelane : IUksus, IComparable<Tegelane>
     {
         private string nimi;
         private List<Ese> ese_list = new List<Ese>();
@@ -15,6 +15,7 @@ namespace Kontrolltoo_Mang
         public Tegelane(string nimi)
         {
             this.nimi = nimi;
+
         }
         public int addItem(int item) 
         { return item; }
@@ -27,16 +28,6 @@ namespace Kontrolltoo_Mang
             }
             return arv_sum;
         }
-        //public int punktideArv_(List <Ese> list)
-        //{
-            
-        //    foreach (Ese item in list)
-        //    {
-        //        arv_sum_ += item.punktideArv();
-        //    }
-        //    return arv_sum_;
-        //}
-
         public string info()
         {
             Console.WriteLine($"Nimi: {nimi}\nArvu punktide {punktideArv()}");
@@ -47,7 +38,7 @@ namespace Kontrolltoo_Mang
             Console.WriteLine("Esemed:");
             foreach (Ese item in ese_list)
             {
-                Console.WriteLine(item.info());
+                item.info();
             }
             Console.WriteLine();
         }
@@ -55,14 +46,14 @@ namespace Kontrolltoo_Mang
         public int CompareTo(Tegelane? other)
         {
             if (other == null) return 1;
-            return m_value.CompareTo(other.m_value);
+            // return m_value.CompareTo(other.m_value);
+            return this.ese_list.Count - other.EsesKogus();
         }
+        private int EsesKogus() { return this.ese_list.Count; }
         public void issueItems(List<Ese> list, int item)
         {
-            Ese help_check = list[item];
             ese_list.Add(list[item]);
-            
-
         }
+        public void Equip(Ese ese) { ese_list.Add(ese); }
     }
 }
